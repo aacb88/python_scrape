@@ -7,5 +7,5 @@ for form in br.forms():
     print "Form name",form.name
     print form
 
-for control in br.form.controls:
+for control in br.form.control:
     print control
