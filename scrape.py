@@ -13,7 +13,7 @@ for item in control.items:
   if item.name == "460006719":
     item.selected = True
   
-    response = br.submit()
+    response = br.submit(nr=1)
 
 html = br.response().read()
 
