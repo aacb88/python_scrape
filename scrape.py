@@ -10,7 +10,7 @@ br.select_form(nr=0)
 control = br.form.find_control(id = "MainContent_cboRaces")
 
 for item in control.items:
-  if item.value == "750003143":
+  if item.name == "750003143":
     item.selected = True
   
   response = br.submit(nr=1)
