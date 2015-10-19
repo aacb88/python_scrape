@@ -27,6 +27,10 @@ for row in main_table.find_all('tr'):
 
 county_table =soup.find('table', {'id': 'MainContent_dgrdCountyRaceResults'})
 
+for header in county_table.find_all('th'):
+  data = [cell.text for cell in row.find_all('th')]
+  print data
+
 for row in county_table.find_all('tr'):
   data = [cell.text for cell in row.find_all('td')]
   print data
