@@ -24,4 +24,9 @@ main_table = soup.find('table', {'id': 'MainContent_dgrdRaceResults'})
 for row in main_table.find_all('tr'):
   data = [cell.text for cell in row.find_all('td')]
   print data
-  
+
+county_table =soup.find('table', {'id': 'MainContent_dgrdCountyRaceResults'})
+
+for row in county_table.find_all('tr'):
+  data = [cell.text for cell in row.find_all('td')]
+  print data
