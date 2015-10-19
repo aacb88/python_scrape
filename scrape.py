@@ -10,7 +10,7 @@ br.select_form(nr=0)
 control = br.form.find_control("MainContent_cboElectionNames")
 
 for item in control.items:
-  if item.name == "750003143":
+  if item.value == "750003143":
     item.selected = True
     print item
   
