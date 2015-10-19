@@ -17,5 +17,11 @@ for item in control.items:
 
 html = br.response().read()
 
-print html
+soup = BeautifulSoup(html, "html.parser")
+
+main_table = soup.find('table', {'id': 'MainContent_dgrdRaceResults'})
+
+for row in main_table.find_all('tr'):
+  data = [cell.text for cell in row.find_all('td')]
+  print data
   
