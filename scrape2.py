@@ -1,4 +1,3 @@
-
 import urllib2, csv
 import mechanize
 from bs4 import BeautifulSoup
@@ -27,21 +26,30 @@ main_table = soup.find('table', {'id': 'MainContent_dgrdRaceResults'})
 
 
 candidate_data = []
-for row in main_table.find_all('tr'):
+#for row in main_table.find_all('tr'):
+  #data = [cell.text for cell in row.find_all('td')]
+  #candidate_data.append(data)
+
+county_table =soup.find('table', {'id': 'MainContent_dgrdCountyRaceResults'})
+
+headers = county_table.find('tr', [0])
+
+for row in headers:
+  fields = [cell.text for cell in row.find_all('th')]
+  candidate_data.append(fields)
+
+#for tr[0] in county_table.find_all('th'):
+    #field_name = [cell.text for cell in header.find_all('th')]
+    #candidate_data.append(field_name)
+
+#for header in county_table.find_all('tr'):
+  #field_name = [cell.text for cell in header.find_all('th')]
+  #candidate_data.append(field_name)
+
+for row in county_table.find_all('tr'):
   data = [cell.text for cell in row.find_all('td')]
   candidate_data.append(data)
 
 outfile = open("./candidate_table.csv", "w")
 writer = csv.writer(outfile)
 writer.writerows(candidate_data)
-
-#county_table =soup.find('table', {'id': 'MainContent_dgrdCountyRaceResults'})
-
-#for header in county_table.find_all('th'):
-  #data = [cell.text for cell in row.find_all('th')]
-  #print data
-
-#for row in county_table.find_all('tr'):
-  #data = [cell.text for cell in row.find_all('td')]
-
-
