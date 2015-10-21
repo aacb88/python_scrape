@@ -34,12 +34,19 @@ county_data = []
 county_table =soup.find('table', {'id': 'MainContent_dgrdCountyRaceResults'})
 
 for row in county_table.find_all('tr'):
-    loop_box = []
     headers = [cell.text for cell in row.find_all('th')]
-    loop_box.append(headers)
+    if headers:
+        county_data.append(headers)
     data = [cell.text for cell in row.find_all('td')]
-    loop_box.append(data)
-    county_data.append(loop_box)
+    if data:
+        county_data.append(data)
+
+#for row in county_table.find_all('tr'):
+    #headers = [cell.text for cell in row.find_all('th')]
+    #county_data.append(headers)
+    #data = [cell.text for cell in row.find_all('td')]
+    #county_data.append(data)
+    
 
 outfile = open("./county_table.csv", "w")
 writer = csv.writer(outfile)
